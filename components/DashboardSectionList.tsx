@@ -24,7 +24,7 @@ export default function DashboardSectionList() {
   return (
     <div className="space-y-4">
       {sections.map((s) => (
-        <div key={s.title}>
+        <div key={s.title} className="rounded-xl border border-gray-100 p-4">
           <div className="flex items-center justify-between">
             <div className="text-sm font-medium text-gray-900">{s.title}</div>
             <div className="text-sm text-gray-600">{s.progress}%</div>

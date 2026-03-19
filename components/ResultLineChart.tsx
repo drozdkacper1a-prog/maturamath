@@ -22,7 +22,7 @@ const data = [
 
 export default function ResultLineChart() {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+    <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-card">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-gray-900">Wynik w czasie</h2>
         <div className="text-xs text-gray-500">7 tygodni</div>
@@ -30,11 +30,11 @@ export default function ResultLineChart() {
 
       <div className="mt-4" style={{ height: 300 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="tydzien" />
-            <YAxis domain={[0, 100]} />
-            <Tooltip />
+          <LineChart data={data} margin={{ top: 8, right: 8, bottom: 8, left: 0 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <XAxis dataKey="tydzien" tick={{ fill: '#6b7280', fontSize: 12 }} />
+            <YAxis domain={[0, 100]} tick={{ fill: '#6b7280', fontSize: 12 }} />
+            <Tooltip cursor={{ stroke: '#a7f3d0' }} />
             <Line
               type="monotone"
               dataKey="wynik"

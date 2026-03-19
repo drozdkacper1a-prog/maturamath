@@ -22,12 +22,12 @@ export default function SuggestedTasks() {
         <Link
           key={t.title}
           href="/zadanie"
-          className="block rounded-2xl border border-gray-200 bg-white p-4 shadow-sm hover:border-gray-300"
+          className="block rounded-xl border border-gray-100 bg-white p-4 shadow-card hover:-translate-y-0.5 hover:border-accent/30"
         >
           <div className="text-sm font-semibold text-gray-900">{t.title}</div>
           <div className="mt-1 text-xs text-gray-600">{t.subtitle}</div>
-          <div className="mt-3 inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-800">
-            Rozwiąż
+          <div className="mt-3 inline-flex items-center rounded-full bg-accentLight px-3 py-1 text-xs font-semibold text-accent">
+            Rozwiąż →
           </div>
         </Link>
       ))}

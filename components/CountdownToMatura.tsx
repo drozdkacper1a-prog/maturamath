@@ -11,7 +11,7 @@ function getDaysTo(target: Date, now: Date) {
 }
 
 export default function CountdownToMatura() {
-  const target = useMemo(() => new Date(2025, 4, 7), []);
+  const target = useMemo(() => new Date(2026, 4, 7), []);
   const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
@@ -24,11 +24,11 @@ export default function CountdownToMatura() {
   const absDays = Math.abs(days);
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+    <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-card">
       <div className="text-sm font-medium text-gray-700">
         Odliczanie do matury
       </div>
-      <div className="mt-1 text-xs text-gray-500">7 maja 2025</div>
+      <div className="mt-1 text-xs text-gray-500">7 maja 2026</div>
 
       <div className="mt-4 flex items-baseline gap-3">
         <div className="text-4xl font-semibold text-gray-900">

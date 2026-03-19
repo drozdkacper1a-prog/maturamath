@@ -28,7 +28,7 @@ function valueToClass(v: number) {
 
 export default function ActivityHeatmap() {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+    <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-card">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-gray-900">
           Aktywność (heatmap)
@@ -36,7 +36,7 @@ export default function ActivityHeatmap() {
         <div className="text-xs text-gray-500">8 tygodni × 7 dni</div>
       </div>
 
-      <div className="mt-4 space-y-1">
+      <div className="mt-4 space-y-1.5">
         {days.map((day, dayIdx) => (
           <div key={day} className="flex items-center gap-3">
             <div className="w-10 text-right text-xs text-gray-500">{day}</div>
@@ -47,7 +47,7 @@ export default function ActivityHeatmap() {
                   <div
                     key={`${day}-${weekIdx}`}
                     title={`Tydzień ${weekIdx + 1}, ${day}: ${v}`}
-                    className={`h-4 w-4 rounded-md ${valueToClass(v)} ring-1 ring-white/70`}
+                    className={`h-3 w-3 rounded-[3px] ${valueToClass(v)} ring-1 ring-white/70`}
                   />
                 );
               })}

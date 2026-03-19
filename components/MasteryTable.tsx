@@ -28,7 +28,7 @@ function level(progress: number) {
 
 export default function MasteryTable() {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+    <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-card">
       <h2 className="text-lg font-semibold text-gray-900">
         Tabela działów
       </h2>

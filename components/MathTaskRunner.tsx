@@ -84,11 +84,11 @@ export default function MathTaskRunner() {
   }
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+    <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-card">
       <h1 className="text-xl font-semibold text-gray-900">Zadanie</h1>
-      <p className="mt-3 text-sm text-gray-700">
-        {task.prompt}
-      </p>
+      <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-4">
+        <p className="font-medium text-gray-800">{task.prompt}</p>
+      </div>
 
       <div className="mt-5">
         <label className="text-sm font-medium text-gray-800">
@@ -99,15 +99,15 @@ export default function MathTaskRunner() {
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
           rows={4}
-          className="mt-2 w-full resize-none rounded-xl border border-gray-200 bg-white p-3 text-sm shadow-sm outline-none focus:border-[#1D9E75] focus:ring-2 focus:ring-[#1D9E75]/20"
+          className="mt-2 w-full resize-none rounded-xl border-2 border-gray-200 bg-white p-3 text-sm shadow-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
           placeholder="Wpisz odpowiedź, np. x1=3, x2=-0.5"
         />
       </div>
 
-      <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center">
+      <div className="mt-4 space-y-2">
         <button
           onClick={onCheck}
-          className="rounded-xl bg-[#1D9E75] px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#168965] focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/40"
+          className="w-full rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#168965] focus:outline-none focus:ring-2 focus:ring-accent/40"
         >
           Sprawdź odpowiedź
         </button>
@@ -120,10 +120,8 @@ export default function MathTaskRunner() {
       </div>
 
       {status === 'success' ? (
-        <div className="mt-5 rounded-2xl border border-green-200 bg-green-50 p-4">
-          <div className="text-sm font-semibold text-green-800">
-            Sukces!
-          </div>
+        <div className="mt-5 rounded-xl border border-green-200 bg-green-50 p-4">
+          <div className="text-sm font-semibold text-green-800">Gratulacje! +25 XP</div>
           <div className="mt-1 text-sm text-green-900">
             Twoja odpowiedź jest poprawna.
           </div>
@@ -131,7 +129,7 @@ export default function MathTaskRunner() {
       ) : null}
 
       {status === 'error' ? (
-        <div className="mt-5 rounded-2xl border border-red-200 bg-red-50 p-4">
+        <div className="mt-5 rounded-xl border border-red-200 bg-red-50 p-4">
           <div className="text-sm font-semibold text-red-800">
             Niestety, spróbuj jeszcze raz.
           </div>

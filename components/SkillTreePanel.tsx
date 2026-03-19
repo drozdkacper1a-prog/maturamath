@@ -47,32 +47,28 @@ function getSubtitle(status: NodeStatus) {
 function SkillGrid({ title, nodes }: { title: string; nodes: SkillNode[] }) {
   return (
     <div>
-      <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
-      <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <h2 className="text-xl font-bold text-gray-900">{title}</h2>
+      <div className="mt-4 flex flex-wrap gap-3">
         {nodes.map((n) => (
           <div
             key={n.id}
-            className="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm"
+            className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${getNodeClasses(
+              n.status
+            )}`}
           >
-            <div
-              className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full ${getNodeClasses(
-                n.status
-              )}`}
-            >
-              <span className="text-sm font-bold">
-                {n.status === 'done'
-                  ? '✓'
-                  : n.status === 'in_progress'
-                    ? '•'
-                    : n.status === 'weak'
-                      ? '!'
-                      : 'L'}
-              </span>
-            </div>
-            <div className="mt-3 text-sm font-medium text-gray-900">
-              {n.label}
-            </div>
-            <div className="mt-1 text-xs text-gray-600">{getSubtitle(n.status)}</div>
+            <span>
+              {n.status === 'done'
+                ? '✓'
+                : n.status === 'in_progress'
+                  ? '•'
+                  : n.status === 'weak'
+                    ? '!'
+                    : 'L'}
+            </span>
+            <span>{n.label}</span>
+            <span className="rounded-full bg-white/25 px-2 py-0.5 text-[11px] font-medium">
+              {getSubtitle(n.status)}
+            </span>
           </div>
         ))}
       </div>
@@ -86,7 +82,7 @@ export default function SkillTreePanel() {
       <SkillGrid title="Funkcje" nodes={functionsSkills} />
       <SkillGrid title="Geometria" nodes={geometrySkills} />
 
-      <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+      <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-card">
         <div className="text-sm font-semibold text-gray-900">Legenda</div>
         <div className="mt-3 flex flex-wrap gap-3 text-xs">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#1D9E75]/10 px-3 py-1 text-[#1D9E75]">
