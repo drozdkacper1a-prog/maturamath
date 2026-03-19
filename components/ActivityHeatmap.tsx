@@ -1,3 +1,5 @@
+import cardStyles from './ChartCard.module.css';
+import styles from './ActivityHeatmap.module.css';
 const days = ['Pon', 'Wto', 'Śr', 'Czw', 'Pt', 'Sob', 'Nd'];
 // 8 tygodni × 7 dni
 const heatmap: number[][] = [
@@ -14,40 +16,39 @@ const heatmap: number[][] = [
 function valueToClass(v: number) {
   switch (v) {
     case 0:
-      return 'bg-green-50';
+      return '#f0fdf4';
     case 1:
-      return 'bg-green-100';
+      return '#dcfce7';
     case 2:
-      return 'bg-green-200';
+      return '#bbf7d0';
     case 3:
-      return 'bg-green-300';
+      return '#86efac';
     default:
-      return 'bg-green-400';
+      return '#4ade80';
   }
 }
 
 export default function ActivityHeatmap() {
   return (
-    <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-card">
-      <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-gray-900">
-          Aktywność (heatmap)
-        </h2>
-        <div className="text-xs text-gray-500">8 tygodni × 7 dni</div>
+    <div className={cardStyles.card}>
+      <div className={cardStyles.head}>
+        <h2 className={cardStyles.title}>Aktywność (heatmap)</h2>
+        <div className={cardStyles.meta}>8 tygodni × 7 dni</div>
       </div>
 
-      <div className="mt-4 space-y-1.5">
+      <div className={styles.gridWrap}>
         {days.map((day, dayIdx) => (
-          <div key={day} className="flex items-center gap-3">
-            <div className="w-10 text-right text-xs text-gray-500">{day}</div>
-            <div className="grid grid-cols-8 gap-1">
+          <div key={day} className={styles.row}>
+            <div className={styles.day}>{day}</div>
+            <div className={styles.weekCols}>
               {heatmap.map((week, weekIdx) => {
                 const v = week[dayIdx] ?? 0;
                 return (
                   <div
                     key={`${day}-${weekIdx}`}
                     title={`Tydzień ${weekIdx + 1}, ${day}: ${v}`}
-                    className={`h-3 w-3 rounded-[3px] ${valueToClass(v)} ring-1 ring-white/70`}
+                    className={styles.cell}
+                    style={{ backgroundColor: valueToClass(v) }}
                   />
                 );
               })}

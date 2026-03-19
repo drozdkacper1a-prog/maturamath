@@ -1,0 +1,61 @@
+.card {
+  border: 1px solid var(--cardBorder);
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 1.25rem;
+  box-shadow: var(--shadowCard);
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.scroll {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.headRow {
+  text-align: left;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.th {
+  padding-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.tr {
+  border-top: 1px solid #f3f4f6;
+}
+
+.td {
+  padding: 0.75rem 0;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.muted {
+  color: #374151;
+}
+
+.badge {
+  display: inline-flex;
+  border-radius: 999px;
+  border: 1px solid;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}

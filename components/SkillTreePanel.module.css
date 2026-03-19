@@ -1,0 +1,109 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.pillRow {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.meta {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 0.1rem 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.done {
+  background: var(--accent);
+}
+
+.inProgress {
+  background: var(--warning);
+}
+
+.weak {
+  background: var(--danger);
+}
+
+.locked {
+  background: #9ca3af;
+  opacity: 0.75;
+}
+
+.legend {
+  border: 1px solid var(--cardBorder);
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 1.25rem;
+  box-shadow: var(--shadowCard);
+}
+
+.legendTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.legendRow {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+}
+
+.doneSoft {
+  background: rgba(29, 158, 117, 0.1);
+  color: var(--accent);
+}
+
+.inProgressSoft {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+}
+
+.weakSoft {
+  background: rgba(239, 68, 68, 0.12);
+  color: #b91c1c;
+}
+
+.lockedSoft {
+  background: #f3f4f6;
+  color: #4b5563;
+}

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import styles from './Navigation.module.css';
 
 const links = [
   { href: '/', label: 'Panel' },
@@ -16,31 +17,27 @@ export default function Navigation() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-40 w-full border-b border-gray-100 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="text-lg font-extrabold text-gray-900">
-          Matura<span className="text-accent">Math</span>
+    <nav className={styles.nav}>
+      <div className={styles.inner}>
+        <Link href="/" className={styles.brand}>
+          Matura<span className={styles.brandAccent}>Math</span>
         </Link>
 
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex items-center rounded-xl border border-gray-200 p-2 text-gray-700 md:hidden"
+          className={styles.menuButton}
           aria-label="Otwórz menu"
         >
-          <span className="text-lg leading-none">☰</span>
+          <span style={{ fontSize: '1.125rem', lineHeight: 1 }}>☰</span>
         </button>
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className={styles.desktopLinks}>
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={`border-b-2 pb-1 text-sm font-semibold ${
-                pathname === l.href
-                  ? 'border-accent text-accent'
-                  : 'border-transparent text-gray-600 hover:border-accent/30 hover:text-gray-900'
-              }`}
+              className={`${styles.link} ${pathname === l.href ? styles.active : ''}`}
             >
               {l.label}
             </Link>
@@ -49,18 +46,14 @@ export default function Navigation() {
       </div>
 
       {open ? (
-        <div className="border-t border-gray-100 bg-white px-4 py-3 md:hidden">
-          <div className="flex flex-col gap-2">
+        <div className={styles.mobilePanel}>
+          <div className={styles.mobileList}>
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className={`rounded-xl px-3 py-2 text-sm font-semibold ${
-                  pathname === l.href
-                    ? 'bg-accentLight text-accent'
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
+                className={`${styles.mobileLink} ${pathname === l.href ? styles.mobileActive : ''}`}
               >
                 {l.label}
               </Link>

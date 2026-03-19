@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import './globals.css';
 import Navigation from '@/components/Navigation';
+import styles from './layout.module.css';
 
 export const metadata: Metadata = {
   title: 'MaturMath - nauka matematyki maturalnej',
@@ -15,11 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-      <body className="min-h-screen bg-white font-sans">
+      <body className={styles.body}>
         <Navigation />
-        <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:py-8">
-          {children}
-        </main>
+        <main className={styles.main}>{children}</main>
       </body>
     </html>
   );

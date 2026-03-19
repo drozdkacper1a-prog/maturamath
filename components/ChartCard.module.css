@@ -1,0 +1,23 @@
+.card {
+  border: 1px solid var(--cardBorder);
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 1.25rem;
+  box-shadow: var(--shadowCard);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.meta {
+  font-size: 0.75rem;
+  color: var(--muted);
+}

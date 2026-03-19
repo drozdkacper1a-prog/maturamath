@@ -1,0 +1,137 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.topGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.hero {
+  border: 1px solid #dcfce7;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #ffffff, #f0fdf4);
+  padding: 1.5rem;
+  box-shadow: var(--shadowCard);
+}
+
+.heroTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.heroRow {
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.score {
+  font-size: 3.5rem;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.goal {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.goalBadge {
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+  text-align: right;
+}
+
+.goalBadgeLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.goalBadgeValue {
+  font-size: 1.125rem;
+  font-weight: 800;
+}
+
+.heroBar {
+  margin-top: 1.25rem;
+}
+
+.barLegend {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.statsGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.sectionInfo {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.card {
+  border: 1px solid var(--cardBorder);
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: var(--shadowCard);
+  padding: 1.25rem;
+}
+
+.bottomGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.todayList {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.todayItem {
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .topGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .bottomGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import styles from './CountdownToMatura.module.css';
 
 function getDaysTo(target: Date, now: Date) {
   // Wybieramy logikę “dni kalendarzowych” (a nie 24h), żeby UI było przewidywalne.
@@ -24,17 +25,13 @@ export default function CountdownToMatura() {
   const absDays = Math.abs(days);
 
   return (
-    <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-card">
-      <div className="text-sm font-medium text-gray-700">
-        Odliczanie do matury
-      </div>
-      <div className="mt-1 text-xs text-gray-500">7 maja 2026</div>
+    <div className={styles.card}>
+      <div className={styles.title}>Odliczanie do matury</div>
+      <div className={styles.date}>7 maja 2026</div>
 
-      <div className="mt-4 flex items-baseline gap-3">
-        <div className="text-4xl font-semibold text-gray-900">
-          {isPast ? 0 : absDays}
-        </div>
-        <div className="text-sm text-gray-600">
+      <div className={styles.row}>
+        <div className={styles.days}>{isPast ? 0 : absDays}</div>
+        <div className={styles.label}>
           {isPast ? 'Matura minęła' : 'dni do matury'}
         </div>
       </div>

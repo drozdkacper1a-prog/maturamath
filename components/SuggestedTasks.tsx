@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import styles from './SuggestedTasks.module.css';
 
 const tasks = [
   {
@@ -17,16 +18,16 @@ const tasks = [
 
 export default function SuggestedTasks() {
   return (
-    <div className="space-y-3">
+    <div className={styles.list}>
       {tasks.map((t) => (
         <Link
           key={t.title}
           href="/zadanie"
-          className="block rounded-xl border border-gray-100 bg-white p-4 shadow-card hover:-translate-y-0.5 hover:border-accent/30"
+          className={styles.card}
         >
-          <div className="text-sm font-semibold text-gray-900">{t.title}</div>
-          <div className="mt-1 text-xs text-gray-600">{t.subtitle}</div>
-          <div className="mt-3 inline-flex items-center rounded-full bg-accentLight px-3 py-1 text-xs font-semibold text-accent">
+          <div className={styles.title}>{t.title}</div>
+          <div className={styles.subtitle}>{t.subtitle}</div>
+          <div className={styles.badge}>
             Rozwiąż →
           </div>
         </Link>

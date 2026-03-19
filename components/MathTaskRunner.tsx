@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useRef, useState } from 'react';
+import styles from './MathTaskRunner.module.css';
 
 type Task = {
   id: string;
@@ -84,59 +85,51 @@ export default function MathTaskRunner() {
   }
 
   return (
-    <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-card">
-      <h1 className="text-xl font-semibold text-gray-900">Zadanie</h1>
-      <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-4">
-        <p className="font-medium text-gray-800">{task.prompt}</p>
+    <div className={styles.card}>
+      <h1 className={styles.title}>Zadanie</h1>
+      <div className={styles.taskBox}>
+        <p>{task.prompt}</p>
       </div>
 
-      <div className="mt-5">
-        <label className="text-sm font-medium text-gray-800">
-          Twoja odpowiedź
-        </label>
+      <div className={styles.field}>
+        <label className={styles.label}>Twoja odpowiedź</label>
         <textarea
           ref={textareaRef}
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
           rows={4}
-          className="mt-2 w-full resize-none rounded-xl border-2 border-gray-200 bg-white p-3 text-sm shadow-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
+          className={styles.textarea}
           placeholder="Wpisz odpowiedź, np. x1=3, x2=-0.5"
         />
       </div>
 
-      <div className="mt-4 space-y-2">
+      <div className={styles.actions}>
         <button
           onClick={onCheck}
-          className="w-full rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#168965] focus:outline-none focus:ring-2 focus:ring-accent/40"
+          className={styles.primaryBtn}
         >
           Sprawdź odpowiedź
         </button>
         <button
           onClick={onNext}
-          className="rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          className={styles.secondaryBtn}
         >
           Następne zadanie
         </button>
       </div>
 
       {status === 'success' ? (
-        <div className="mt-5 rounded-xl border border-green-200 bg-green-50 p-4">
-          <div className="text-sm font-semibold text-green-800">Gratulacje! +25 XP</div>
-          <div className="mt-1 text-sm text-green-900">
-            Twoja odpowiedź jest poprawna.
-          </div>
+        <div className={styles.success}>
+          <div className={styles.successTitle}>Gratulacje! +25 XP</div>
+          <div className={styles.successText}>Twoja odpowiedź jest poprawna.</div>
         </div>
       ) : null}
 
       {status === 'error' ? (
-        <div className="mt-5 rounded-xl border border-red-200 bg-red-50 p-4">
-          <div className="text-sm font-semibold text-red-800">
-            Niestety, spróbuj jeszcze raz.
-          </div>
-          <div className="mt-2 text-sm font-medium text-red-900">
-            {task.solutionTitle}
-          </div>
-          <ol className="mt-2 list-decimal space-y-2 pl-5 text-sm text-red-900">
+        <div className={styles.error}>
+          <div className={styles.errorTitle}>Niestety, spróbuj jeszcze raz.</div>
+          <div className={styles.errorSubtitle}>{task.solutionTitle}</div>
+          <ol className={styles.steps}>
             {task.solutionSteps.map((s) => (
               <li key={s}>{s}</li>
             ))}

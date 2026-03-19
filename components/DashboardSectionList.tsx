@@ -1,4 +1,5 @@
 import ProgressBar from '@/components/ProgressBar';
+import styles from './DashboardSectionList.module.css';
 
 type Section = {
   title: string;
@@ -15,22 +16,22 @@ const sections: Section[] = [
 ];
 
 function getBarColor(progress: number) {
-  if (progress > 70) return 'bg-[#1D9E75]';
-  if (progress >= 40) return 'bg-[#F59E0B]';
-  return 'bg-[#EF4444]';
+  if (progress > 70) return 'var(--accent)';
+  if (progress >= 40) return 'var(--warning)';
+  return 'var(--danger)';
 }
 
 export default function DashboardSectionList() {
   return (
-    <div className="space-y-4">
+    <div className={styles.list}>
       {sections.map((s) => (
-        <div key={s.title} className="rounded-xl border border-gray-100 p-4">
-          <div className="flex items-center justify-between">
-            <div className="text-sm font-medium text-gray-900">{s.title}</div>
-            <div className="text-sm text-gray-600">{s.progress}%</div>
+        <div key={s.title} className={styles.item}>
+          <div className={styles.row}>
+            <div className={styles.title}>{s.title}</div>
+            <div className={styles.value}>{s.progress}%</div>
           </div>
-          <div className="mt-2">
-            <ProgressBar value={s.progress} colorClass={getBarColor(s.progress)} />
+          <div className={styles.bar}>
+            <ProgressBar value={s.progress} color={getBarColor(s.progress)} />
           </div>
         </div>
       ))}

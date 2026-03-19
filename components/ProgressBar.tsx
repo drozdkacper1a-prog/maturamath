@@ -1,17 +1,18 @@
+import styles from './ProgressBar.module.css';
+
 type Props = {
   value: number; // 0..100
-  colorClass?: string;
+  color?: string;
 };
 
-export default function ProgressBar({ value, colorClass }: Props) {
+export default function ProgressBar({ value, color }: Props) {
   const safe = Math.max(0, Math.min(100, value));
-  const fillClass = colorClass ?? 'bg-accent';
 
   return (
-    <div className="h-3 w-full overflow-hidden rounded-full bg-gray-100">
+    <div className={styles.track}>
       <div
-        className={`h-full ${fillClass} transition-[width] duration-500`}
-        style={{ width: `${safe}%` }}
+        className={styles.fill}
+        style={{ width: `${safe}%`, backgroundColor: color ?? 'var(--accent)' }}
       />
     </div>
   );

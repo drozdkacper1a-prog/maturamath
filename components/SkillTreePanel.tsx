@@ -1,3 +1,5 @@
+import styles from './SkillTreePanel.module.css';
+
 type NodeStatus = 'done' | 'in_progress' | 'weak' | 'locked';
 
 type SkillNode = {
@@ -21,13 +23,13 @@ const geometrySkills: SkillNode[] = [
 function getNodeClasses(status: NodeStatus) {
   switch (status) {
     case 'done':
-      return 'bg-[#1D9E75] text-white';
+      return styles.done;
     case 'in_progress':
-      return 'bg-[#F59E0B] text-white';
+      return styles.inProgress;
     case 'weak':
-      return 'bg-[#EF4444] text-white';
+      return styles.weak;
     case 'locked':
-      return 'bg-gray-400 text-white opacity-70';
+      return styles.locked;
   }
 }
 
@@ -47,14 +49,12 @@ function getSubtitle(status: NodeStatus) {
 function SkillGrid({ title, nodes }: { title: string; nodes: SkillNode[] }) {
   return (
     <div>
-      <h2 className="text-xl font-bold text-gray-900">{title}</h2>
-      <div className="mt-4 flex flex-wrap gap-3">
+      <h2 className={styles.title}>{title}</h2>
+      <div className={styles.pillRow}>
         {nodes.map((n) => (
           <div
             key={n.id}
-            className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${getNodeClasses(
-              n.status
-            )}`}
+            className={`${styles.pill} ${getNodeClasses(n.status)}`}
           >
             <span>
               {n.status === 'done'
@@ -66,7 +66,7 @@ function SkillGrid({ title, nodes }: { title: string; nodes: SkillNode[] }) {
                     : 'L'}
             </span>
             <span>{n.label}</span>
-            <span className="rounded-full bg-white/25 px-2 py-0.5 text-[11px] font-medium">
+            <span className={styles.meta}>
               {getSubtitle(n.status)}
             </span>
           </div>
@@ -78,27 +78,27 @@ function SkillGrid({ title, nodes }: { title: string; nodes: SkillNode[] }) {
 
 export default function SkillTreePanel() {
   return (
-    <div className="space-y-6">
+    <div className={styles.wrapper}>
       <SkillGrid title="Funkcje" nodes={functionsSkills} />
       <SkillGrid title="Geometria" nodes={geometrySkills} />
 
-      <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-card">
-        <div className="text-sm font-semibold text-gray-900">Legenda</div>
-        <div className="mt-3 flex flex-wrap gap-3 text-xs">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#1D9E75]/10 px-3 py-1 text-[#1D9E75]">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#1D9E75]" />
+      <div className={styles.legend}>
+        <div className={styles.legendTitle}>Legenda</div>
+        <div className={styles.legendRow}>
+          <span className={`${styles.legendItem} ${styles.doneSoft}`}>
+            <span className={styles.dot} style={{ background: 'var(--accent)' }} />
             opanowane
           </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#F59E0B]/10 px-3 py-1 text-[#B45309]">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#F59E0B]" />
+          <span className={`${styles.legendItem} ${styles.inProgressSoft}`}>
+            <span className={styles.dot} style={{ background: 'var(--warning)' }} />
             w trakcie
           </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#EF4444]/10 px-3 py-1 text-[#B91C1C]">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#EF4444]" />
+          <span className={`${styles.legendItem} ${styles.weakSoft}`}>
+            <span className={styles.dot} style={{ background: 'var(--danger)' }} />
             słabe
           </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1 text-gray-700">
-            <span className="h-2.5 w-2.5 rounded-full bg-gray-400" />
+          <span className={`${styles.legendItem} ${styles.lockedSoft}`}>
+            <span className={styles.dot} style={{ background: '#9ca3af' }} />
             zablokowane
           </span>
         </div>

@@ -9,6 +9,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import styles from './ChartCard.module.css';
 
 const data = [
   { tydzien: 'T1', wynik: 52 },
@@ -22,13 +23,13 @@ const data = [
 
 export default function ResultLineChart() {
   return (
-    <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-card">
-      <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-gray-900">Wynik w czasie</h2>
-        <div className="text-xs text-gray-500">7 tygodni</div>
+    <div className={styles.card}>
+      <div className={styles.head}>
+        <h2 className={styles.title}>Wynik w czasie</h2>
+        <div className={styles.meta}>7 tygodni</div>
       </div>
 
-      <div className="mt-4" style={{ height: 300 }}>
+      <div style={{ marginTop: 16, height: 300 }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ top: 8, right: 8, bottom: 8, left: 0 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
